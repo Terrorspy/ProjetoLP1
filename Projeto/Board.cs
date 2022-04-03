@@ -7,7 +7,7 @@ class Board{
     ///Cria um array bidimensional de 5x5 chamado Board e é divido em par e ímpar.
     Random random = new Random();
 
-    public Random GetRandom(){
+    public Random GetRandom(){ ///Serve par gerar números randoms diferentes para os jogadores.
         return random;
     }
     private String[,] Matrix = new String[5,5]; ///Array bidimensional de 5x5.
@@ -31,6 +31,7 @@ class Board{
             }
             Console.WriteLine();
        }
+       ///Faz print no ecrã as teclas do jogo e o que cada letra é no jogo.
        Console.WriteLine("Player Keys: D (Roll dice), E(Roll extra dice if any), C(Roll cheat dice if any)");
        Console.WriteLine("S = Snake | C = Cobra | H = Ladder | B = Boost | U = U-Turn | O = Extra Dice | Q = Cheat Dice");
     }
@@ -58,6 +59,7 @@ class Board{
 
     ///Gera posições random para as casas especiais seguindo as suas restrições.
     ///Cada Casa especial tem uma letra designada para se identificar.
+    ///<remarks>
     ///Snakes = S.
     ///Ladders = H.
     ///Cobra = C.
@@ -65,6 +67,7 @@ class Board{
     ///U-Turn = U.
     ///ExtraDie = O.
     ///CheatDie = Q.
+    ///<remarks>
     private void GenerateSpecialCases(){
         int Snakes = random.Next(2, 4);
         int Ladders = random.Next(2, 4);
@@ -112,6 +115,7 @@ class Board{
 
     }
 
+    ///Função que aplica os efeitos das casas especiais quando o jogador cair nela.
     public void ApplySpecialCase(Player p, String Case){
         if(Case == "C"){
             p.SetPos(0, 0);
@@ -130,10 +134,11 @@ class Board{
         }
         else if(Case == "O"){
             p.SetExtraDie(true);
-            Console.WriteLine("Player {0} won an extra die.", p.GetId()); 
+            Console.WriteLine("Player {0} won an Extra Die.", p.GetId()); 
         }
         else if(Case == "Q"){
             p.SetCheatDie(true);
+            Console.WriteLine("Player {0} won a Cheat Die.", p.GetId());
         }
     }
 
@@ -166,12 +171,13 @@ class Board{
         
     }
 
+    ///Função que pergunta se o jogador já ganhou quando chega a casa 25
     public bool HasPlayerWon(Player p){
         return p.GetPos()[0] == 4 && p.GetPos()[1] == 4;
     }
 }
 ///<summary>
-///Cria os dois jogadores do jogo e o gera os valores que saiam do dado.
+///Cria os dois jogadores do jogo e o seu movimento e o gera os valores que saiam dos dados.
 ///<summary>
     class Player{
         private int id; ///os ID dos jogadores.
@@ -179,33 +185,37 @@ class Board{
         private bool HasExtraDie = false;
         private bool HasCheatDie = false;
 
+        ///Função getter para o Extra Die.
         public bool GetExtraDie(){
             return HasExtraDie;
         }
 
+        ///Função setter para o Extra Die.
         public void SetExtraDie(bool NewExtraDie){
             HasExtraDie = NewExtraDie;
         }
 
+        ///Função getter para o Cheat Die.
         public bool GetCheatDie(){
             return HasCheatDie;
         }
 
+        ///Função setter para o Cheat Die.
         public void SetCheatDie(bool NewCheatDie){
             HasCheatDie = NewCheatDie;
         }
 
-        ///Recebe o ID dos jogadores.
+        ///Busca o ID dos jogadores.
         public int GetId(){
             return id;
         }
 
-        ///Recebe as posições dos jogadores.
+        ///Busca as posições dos jogadores.
         public int[] GetPos(){
             return pos;
         }
 
-        ///Cria uma nova posição quando for tirado o dado.
+        ///Põe a posição dos jogadores.
         public void SetPos(int NewPosX, int NewPosY){
             pos[0] = NewPosX;
             pos[1] = NewPosY;
@@ -218,6 +228,7 @@ class Board{
             pos[1] = 0;
         }
 
+        ///Permite o jogador mover para trás.
         private void MovementBackwards(Board MovementBoard, int backwardsteps)
         {
             for( int i = 0; i < backwardsteps; i++){
@@ -243,6 +254,7 @@ class Board{
             }
         }
 
+        ///Permite o jogador andar para frente.
         public void Movement(Board MovementBoard, int steps ){
             if(steps < 0){
                 MovementBackwards(MovementBoard, -steps);
@@ -280,10 +292,20 @@ class Board{
             return random.Next(1,6);
         }
 
+        ///Lança o Extra Die.
         public int RollExtraDice(Random random){
             return RollDice(random) + RollDice(random);
         }
+
+        ///Lança o Cheat Die.
+        public int RollCheatDice(){
+            return 
+        }
     }
+
+    ///<summary>
+    ///Começa o jogo e cria um game loop até alguém ganhar.
+    ///<summary>
     class SnakesAndLadders{
         static void Main(string[] args)
         {
@@ -299,7 +321,7 @@ class Board{
                 if(Turn % 2 == 0){
                     PlayerPlaying = p1;
                 }else{
-                    PlayerPlaying = p2;
+                    PlayerPlaying = p2; 
                 }
                 Console.WriteLine("Player {0} is playing", PlayerPlaying.GetId());
                 String Play = Console.ReadLine();
