@@ -1,8 +1,8 @@
 # Snakes And Ladders
 ## Autores: Diogo Soares, 22107218. Tomás Váz, 22102918. Rodrigo Ferreira, 22103286.
-### Tomás Vaz fez o tabuleiro.
-### Rodrigo Ferreira fez o dado e os jogadores.
-### Diogo Soares corrigiu o que estava errado e adicionou as regras do jogo ao tabuleiro.
+### Tomás Vaz fez o tabuleiro. (Na sua branch)
+### Rodrigo Ferreira fez o dado e os jogadores. (Como não criou a sua branch mandou em privado)
+### Diogo Soares corrigiu o que estava errado e adicionou as regras do jogo ao tabuleiro. (Na sua branch)
 
 O repositório Git utiizado chama-se ProjetoLP1.\
 O link do [repositório](https://github.com/Terrorspy/ProjetoLP1).\
