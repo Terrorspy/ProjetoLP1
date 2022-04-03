@@ -32,7 +32,7 @@ class Board{
             Console.WriteLine();
        }
        ///Faz print no ecrã as teclas do jogo e o que cada letra é no jogo.
-       Console.WriteLine("Player Keys: D (Roll dice), E(Roll extra dice if any), C(Roll cheat dice if any)");
+       Console.WriteLine("Player Keys: D (Roll dice), E(Roll extra dice if any)");
        Console.WriteLine("S = Snake | C = Cobra | H = Ladder | B = Boost | U = U-Turn | O = Extra Dice | Q = Cheat Dice");
     }
 
@@ -296,11 +296,6 @@ class Board{
         public int RollExtraDice(Random random){
             return RollDice(random) + RollDice(random);
         }
-
-        ///Lança o Cheat Die.
-        public int RollCheatDice(){
-            return 
-        }
     }
 
     ///<summary>
@@ -309,7 +304,7 @@ class Board{
     class SnakesAndLadders{
         static void Main(string[] args)
         {
-            String[] AvailablePlays = new String[3]{"D", "E", "C"};
+            String[] AvailablePlays = new String[2]{"D", "E"};
             Player p1 = new Player(1);
             Player p2 = new Player(2);
             Board b = new Board(0,0);
@@ -330,8 +325,31 @@ class Board{
                 }
                 if(Play == "D"){
                     int roll = PlayerPlaying.RollDice(b.GetRandom());
-                    PlayerPlaying.Movement(b,roll);
                     Console.WriteLine("Player {0} rolled {1}", PlayerPlaying.GetId(), roll);
+                    if( PlayerPlaying.GetCheatDie()){
+                         Console.WriteLine("Do you want to use the cheat dice?");
+                         String Resposta = Console.ReadLine();
+                        if ( Resposta.Equals("Y") || Resposta.Equals("Yes")){
+                            Console.WriteLine("What value do you want?");
+                            String NewVal = Console.ReadLine();
+                            int val = int.Parse(NewVal);
+                            while(val < 1 || val > 6){
+                                Console.WriteLine("Invalid value, please input a number between 1-6. What value do you want?");
+                                NewVal = Console.ReadLine();
+                                val = int.Parse(NewVal);
+                            }
+                            PlayerPlaying.Movement(b, val);
+                            PlayerPlaying.SetCheatDie(false);
+
+                        }
+                        else{
+                            PlayerPlaying.Movement(b,roll);
+                        }
+                    }else{
+                        PlayerPlaying.Movement(b,roll);
+                    }
+
+
                 }
                 else if(Play == "E" && PlayerPlaying.GetExtraDie()){
                     int roll = PlayerPlaying.RollExtraDice(b.GetRandom());
