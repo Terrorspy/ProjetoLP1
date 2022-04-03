@@ -33,7 +33,8 @@ ExtraDie = O\
 CheatDie = Q**
 
 Verificou-se onde se podia meter as casas especiais sabendo que havia restrições sendo na primeira e última casa do tabuleiro\
-e claramente não podia estar fora do tabuleiro e dentro da mesma casa com uma casa especial já colocada.
+e claramente não podia estar fora do tabuleiro e dentro da mesma casa com uma casa especial já colocada.\
+Foi feita uma função que aplicava os efeitos das casas especiais.
 
 Criou-se uma classe chamado player, para os jogadores, o seu movimento e os dados.\
 Foi feito getters e setters para os ID e as posições dos jogadores.\
@@ -48,7 +49,6 @@ Começa o jogo e criou-se um game loop até alguém ganhar.\
 Também diz quem está a jogar e o número que lançou do dado.
 
 ## Referências
-StackOverflow para criar o [Cheat Die](https://stackoverflow.com/questions/2263894/how-to-create-a-biased-number-generator-using-a-pair-of-six-sided-dice).\
 Debate com membros de família que percebem programação para aplicação dos efeitos das casas especiais\
 e movimento dos jogadores.
 
