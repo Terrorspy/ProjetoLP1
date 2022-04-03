@@ -1,0 +1,50 @@
+<<<<<<< HEAD
+# THIS IS ONLY FOR THE gitattributes REPOSITORY.
+# Handle line endings automatically for files detected as text
+# and leave all files detected as binary untouched.
+*               text=auto
+
+#
+# The above will handle all files NOT found below
+#
+# These files are text and should be normalized (Convert crlf => lf)
+*.gitattributes text
+.gitignore      text
+*.md            text diff=markdown
+
+#
+# Exclude files from exporting
+#
+
+.gitattributes  export-ignore
+.gitignore      export-ignore
+
+#
+# Enable syntax highlighting for files with `.gitattributes` extensions.
+#
+=======
+# THIS IS ONLY FOR THE gitattributes REPOSITORY.
+# Handle line endings automatically for files detected as text
+# and leave all files detected as binary untouched.
+*               text=auto
+
+#
+# The above will handle all files NOT found below
+#
+# These files are text and should be normalized (Convert crlf => lf)
+*.gitattributes text
+.gitignore      text
+*.md            text diff=markdown
+
+#
+# Exclude files from exporting
+#
+
+.gitattributes  export-ignore
+.gitignore      export-ignore
+
+#
+# Enable syntax highlighting for files with `.gitattributes` extensions.
+#
+>>>>>>> 8e1e5169c9c1ecd5eb7a571435114dd93ccc3ea8
+*.gitattributes linguist-language=gitattributes
