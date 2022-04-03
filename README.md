@@ -1,8 +1,8 @@
 # Snakes And Ladders
 ## Autores: Diogo Soares, 22107218. Tomás Váz, 22102918. Rodrigo Ferreira, 22103286.
-### Tomás Vaz fez o tabuleiro.
-### Rodrigo Ferreira fez o dado e os jogadores.
-### Diogo Soares corrigiu o que estava errado e adicionou as regras do jogo ao tabuleiro.
+### Tomás Vaz fez o tabuleiro. (Na sua branch)
+### Rodrigo Ferreira fez o dado e os jogadores. (Como não criou a sua branch mandou em privado)
+### Diogo Soares corrigiu o que estava errado e adicionou as regras do jogo ao tabuleiro. (Na sua branch)
 
 O repositório Git utiizado chama-se ProjetoLP1.\
 O link do [repositório](https://github.com/Terrorspy/ProjetoLP1).\
@@ -33,7 +33,8 @@ ExtraDie = O\
 CheatDie = Q**
 
 Verificou-se onde se podia meter as casas especiais sabendo que havia restrições sendo na primeira e última casa do tabuleiro\
-e claramente não podia estar fora do tabuleiro e dentro da mesma casa com uma casa especial já colocada.
+e claramente não podia estar fora do tabuleiro e dentro da mesma casa com uma casa especial já colocada.\
+Foi feita uma função que aplicava os efeitos das casas especiais.
 
 Criou-se uma classe chamado player, para os jogadores, o seu movimento e os dados.\
 Foi feito getters e setters para os ID e as posições dos jogadores.\
@@ -48,7 +49,6 @@ Começa o jogo e criou-se um game loop até alguém ganhar.\
 Também diz quem está a jogar e o número que lançou do dado.
 
 ## Referências
-StackOverflow para criar o [Cheat Die](https://stackoverflow.com/questions/2263894/how-to-create-a-biased-number-generator-using-a-pair-of-six-sided-dice).\
 Debate com membros de família que percebem programação para aplicação dos efeitos das casas especiais\
 e movimento dos jogadores.
 
